@@ -1,0 +1,11 @@
+# Compiled class file
+*.class
+
+# Package Files #
+*.jar
+*.war
+
+build
+target
+.idea
+.gradle
