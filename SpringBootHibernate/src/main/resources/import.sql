@@ -1,0 +1,1 @@
+insert into Team (id,name) values(1,'Barcelona');
