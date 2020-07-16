@@ -1,7 +1,10 @@
 package com.example.demo.services;
 
+import static java.util.stream.Collectors.toList;
+
 import com.example.demo.EmployeeRepository;
 import com.example.demo.entity.EmployeeEntity;
+import com.example.demo.model.Employee;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +21,8 @@ public class EmployeeServiceImpl implements EmployeeService {
   }
 
   @Override
-  public List<EmployeeEntity> getEmployees() {
-    return employeeRepository.findAll();
+  public List<Employee> getEmployees() {
+    return employeeRepository.findAll().stream().map(Employee::from).collect(toList());
   }
 
   @Override
@@ -28,33 +31,21 @@ public class EmployeeServiceImpl implements EmployeeService {
   }
 
   @Override
-  public EmployeeEntity getEmployeeById(Long id) {
-    return employeeRepository.getOne(id);
+  public Employee getEmployeeById(Long id) {
+    return Employee.from(employeeRepository.getOne(id));
   }
 
   @Override
-  public EmployeeEntity createOrUpdateEmployee(EmployeeEntity entity) {
+  public Employee createOrUpdateEmployee(Employee entity) {
     if (entity.getId() == null) {
-      entity = employeeRepository.save(entity);
-
-      return entity;
+      return Employee.from(employeeRepository.save(entity.copy(new EmployeeEntity())));
     } else {
       Optional<EmployeeEntity> employee = employeeRepository.findById(entity.getId());
 
-      if (employee.isPresent()) {
-        EmployeeEntity newEntity = employee.get();
-        newEntity.setEmail(entity.getEmail());
-        newEntity.setFirstName(entity.getFirstName());
-        newEntity.setLastName(entity.getLastName());
-
-        newEntity = employeeRepository.save(newEntity);
-
-        return newEntity;
-      } else {
-        entity = employeeRepository.save(entity);
-
-        return entity;
-      }
+      return employee.map(
+          employeeEntity -> Employee.from(employeeRepository.save(entity.copy(employeeEntity))))
+          .orElseGet(
+              () -> Employee.from(employeeRepository.save(entity.copy(new EmployeeEntity()))));
     }
   }
 }

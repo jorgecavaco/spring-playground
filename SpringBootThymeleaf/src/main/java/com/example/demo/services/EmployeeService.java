@@ -1,15 +1,15 @@
 package com.example.demo.services;
 
-import com.example.demo.entity.EmployeeEntity;
+import com.example.demo.model.Employee;
 import java.util.List;
 
 public interface EmployeeService {
 
-  List<EmployeeEntity> getEmployees();
+  List<Employee> getEmployees();
 
   void delete(Long id);
 
-  EmployeeEntity getEmployeeById(Long id);
+  Employee getEmployeeById(Long id);
 
-  EmployeeEntity createOrUpdateEmployee(EmployeeEntity entity);
+  Employee createOrUpdateEmployee(Employee entity);
 }

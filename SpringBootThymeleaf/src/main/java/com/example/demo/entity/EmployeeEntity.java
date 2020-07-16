@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.Email;
 
 @Entity
 public class EmployeeEntity {
@@ -15,16 +13,15 @@ public class EmployeeEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotNull
   @Column(name = "first_name", nullable = false)
   private String firstName;
 
-  @NotNull
   @Column(name = "last_name", nullable = false)
   private String lastName;
 
-  @Email
   private String email;
+
+  private String image;
 
   public String getFirstName() {
     return firstName;
@@ -50,9 +47,16 @@ public class EmployeeEntity {
     this.email = email;
   }
 
-
   public Long getId() {
     return id;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
   }
 
   @Override
