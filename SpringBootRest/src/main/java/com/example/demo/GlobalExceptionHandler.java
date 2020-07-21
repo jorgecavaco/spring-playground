@@ -19,4 +19,9 @@ public class GlobalExceptionHandler {
       HttpServletRequest request, IndexOutOfBoundsException ex) {
     return ResponseEntity.status(400).body(ex.getMessage());
   }
+
+  @ExceptionHandler(value = {NotFoundException.class})
+  public ResponseEntity<String> notFoundException(HttpServletRequest request, NotFoundException ex) {
+    return ResponseEntity.status(404).body(ex.getMessage());
+  }
 }
