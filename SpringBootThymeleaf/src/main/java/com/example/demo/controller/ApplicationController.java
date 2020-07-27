@@ -8,7 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -45,10 +44,7 @@ public class ApplicationController {
   }
 
   @GetMapping("/employees")
-  public String employees(Model model, HttpSession session) {
-
-    session.setAttribute("CUSTOM_ATTRIBUTE", "Test");
-
+  public String employees(Model model) {
     model.addAttribute("employees", employeeService.getEmployees());
     return "employees";
   }
