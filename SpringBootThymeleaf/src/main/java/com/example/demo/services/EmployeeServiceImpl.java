@@ -7,7 +7,11 @@ import com.example.demo.entity.EmployeeEntity;
 import com.example.demo.model.Employee;
 import java.util.List;
 import java.util.Optional;
+import javax.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,11 +35,16 @@ public class EmployeeServiceImpl implements EmployeeService {
   }
 
   @Override
+  @Secured({"ROLE_USER", "ROLE_ADMIN"})
+  //@RolesAllowed("ROLE_USER")
   public Employee getEmployeeById(Long id) {
     return Employee.from(employeeRepository.getOne(id));
   }
 
   @Override
+  //@PreAuthorize("hasRole('ROLE_USER')")
+  //@PreAuthorize("#entity.FirstName != authentication.principal.username")
+  //@PostAuthorize("returnObject.firstName != authentication.principal.username")
   public Employee createOrUpdateEmployee(Employee entity) {
     if (entity.getId() == null) {
       return Employee.from(employeeRepository.save(entity.copy(new EmployeeEntity())));

@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -38,8 +39,15 @@ public class ApplicationController {
     return "index";
   }
 
+  @GetMapping("/login")
+  public String login() {
+    return "login";
+  }
+
   @GetMapping("/employees")
-  public String employees(Model model) {
+  public String employees(Model model, HttpSession session) {
+
+    session.setAttribute("CUSTOM_ATTRIBUTE", "Test");
 
     model.addAttribute("employees", employeeService.getEmployees());
     return "employees";
@@ -65,6 +73,7 @@ public class ApplicationController {
 
     return "add-edit-employee";
   }
+
 
   @PostMapping(path = "/createEmployee")
   public String createOrUpdateEmployee(@Valid @ModelAttribute Employee employee,
