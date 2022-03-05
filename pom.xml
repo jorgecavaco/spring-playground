@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.javatpoint</groupId>
-    <artifactId>spring-boot-example</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-multi-module-project</name>
-    <description>Demo project for Spring Boot</description>
+    <groupId>com.github</groupId>
+    <artifactId>spring-playground</artifactId>
+    <version>0.0.1</version>
+
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -44,5 +44,22 @@
     </pluginRepositories>
     <modules>
         <module>SpringBootKafka</module>
+        <module>SpringBootJdbcTemplate</module>
+        <module>SpringBootThymeleaf</module>
+        <module>SpringAnnotationConfig</module>
+        <module>SpringApplicationContext</module>
+        <module>SpringBootRest</module>
+        <module>SpringBootRestSecurity</module>
+        <module>SpringBootConsole</module>
+        <module>SpringLifeCycle</module>
+        <module>SpringBootWS</module>
+        <module>SpringBootHibernate</module>
+        <module>SpringBootTests</module>
+        <module>SpringBootDocker</module>
+        <module>SpringBootThymeleafSecurity</module>
+        <module>SpringBootAspectOrientedProgramming</module>
+        <module>SpringBootHexagonalArchitecture</module>
+        <module>SpringBootCucumber</module>
+        <module>SpringBootWebflux</module>
     </modules>
 </project>

@@ -14,12 +14,12 @@
 	</build>
 
 	<parent>
-		<artifactId>spring_examples</artifactId>
-		<groupId>com.github.spring_examples</groupId>
-		<version>1.0</version>
+		<groupId>com.github</groupId>
+		<artifactId>spring-playground</artifactId>
+		<version>0.0.1</version>
 	</parent>
 
-	<artifactId>spring_bean_post_processor</artifactId>
+	<artifactId>SpringLifeCycle</artifactId>
   
   <properties>
 
@@ -29,11 +29,11 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Spring -->
-		<spring-framework.version>4.0.2.RELEASE</spring-framework.version>
+		<spring-framework.version>5.3.16</spring-framework.version>
 
 		<!-- Logging -->
-		<logback.version>1.0.13</logback.version>
-		<slf4j.version>1.7.5</slf4j.version>
+		<logback.version>1.2.10</logback.version>
+		<slf4j.version>1.7.36</slf4j.version>
 
 	</properties>
 	
