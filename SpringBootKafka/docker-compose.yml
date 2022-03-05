@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  kafka:
+    build: ./kafka
+    ports:
+      - "9092:9092"
